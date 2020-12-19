@@ -6,7 +6,11 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        //references: { //articulo pertenece a la categoria
+        //  model: 'Categoria',
+        //  key: 'id'
+        //}
       },
       codigo: {
         type: Sequelize.STRING

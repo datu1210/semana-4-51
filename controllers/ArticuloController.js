@@ -32,7 +32,7 @@ module.exports = {
 
         try {
 
-            const re = await Articulo.update({nombre: req.body.nombre, description: req.body.description, codigo: req.body.codigo , categoriaId: req.body.categoria},{where:{id: req.body.id}})
+            const re = await Articulo.update({nombre: req.body.nombre, description: req.body.description, codigo: req.body.codigo , categoriaId: req.body.categoriaId},{where:{id: req.body.id}})
             res.status(200).json(re)
             
         } catch (error) {
