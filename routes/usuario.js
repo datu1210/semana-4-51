@@ -9,5 +9,8 @@ const router = routerx();
 router.get('/list', usuarioController.list);
 router.post('/login', usuarioController.login);
 router.post('/register', usuarioController.register);
+router.get('/test', auth.verifyUsuario, function (req, res) {
+    res.status(200).json("re")
+  })
 
 module.exports = router;

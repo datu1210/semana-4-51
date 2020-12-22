@@ -1,7 +1,7 @@
 //Middleware de autenticacion;
 const tokenService = require('../services/token');
 
-exports = {
+module.exports = {
 
     verifyUsuario: async (req, res, next) => {
         try {
@@ -12,7 +12,7 @@ exports = {
                 });
             }
             const response = await tokenService.decode(req.headers.token);
-            if (response.rol == 'Administrador' || response.rol == 'Vendedor' || response.rol == 'Almacenero') {
+            if (response.rol == 'Administrador' || response.rol == 'Cliente' || response.rol == 'Almacenero') {
                 next();
             } else {
                 return res.status(403).send({
