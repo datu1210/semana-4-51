@@ -1,9 +1,9 @@
 {
     "development": {
-        "username": "tk6nc52rIB",
-        "password": "PcinToFbSj",
-        "database": "tk6nc52rIB",
-        "host": "remotemysql.com",
+        "username": "root",
+        "password": "admin",
+        "database": "prueba",
+        "host": "localhost",
         "dialect": "mysql",
         "port": "3306"
     },

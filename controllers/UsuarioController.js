@@ -41,12 +41,21 @@ module.exports = {
                 // Evaluar contraseña
                 const contrasenhaValida = bcrypt.compareSync(req.body.password, user.password)
                 if (contrasenhaValida) {
-                    const token = servToken.encode(user.id, user.rol)
+                    const token = await servToken.encode(user.id, user.rol)
+                    let userReturn = {
+                        rol: "",
+                        nombre: "",
+                        email: "",
+                    }
+                    
+                    userReturn.rol = user.rol;
+                    userReturn.nombre = user.nombre;
+                    userReturn.email = user.email;
 
                     res.status(200).send({
                         auth: true,
                         tokenReturn: token,
-                        user: user
+                        user: userReturn,
                     })
 
                 } else {
