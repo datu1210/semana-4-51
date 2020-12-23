@@ -7,10 +7,6 @@ module.exports = {
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
-        //references: { //articulo pertenece a la categoria
-        //  model: 'Categoria',
-        //  key: 'id'
-        //}
       },
       codigo: {
         type: Sequelize.STRING
@@ -24,8 +20,15 @@ module.exports = {
       estado: {
         type: Sequelize.INTEGER
       },
-      categoriaId: {
+      url: {
         type: Sequelize.INTEGER
+      },
+      categoriaId: {
+        type: Sequelize.INTEGER,
+        references: { //articulo pertenece a la categoria
+         model: 'Categoria',
+         key: 'id'
+        }
       },
       createdAt: {
         allowNull: false,
