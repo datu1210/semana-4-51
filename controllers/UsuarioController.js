@@ -1,6 +1,7 @@
 const { Usuario } = require('../models/');
-const bcrypt = require('bcryptjs')
-const servToken = require('../services/token')
+const bcrypt = require('bcryptjs');
+const servToken = require('../services/token');
+const { Op } = require("sequelize");
 
 
 module.exports = {
@@ -8,7 +9,13 @@ module.exports = {
     list: async (req, res, next) => {
         try {
 
-            const re = await Usuario.findAll()
+            const re = await Usuario.findAll({
+                where:{
+                    rol:{
+                        [Op.ne]:"Administrador"
+                    }
+                }
+            })
             res.status(200).json(re)
             
         } catch (error) {
