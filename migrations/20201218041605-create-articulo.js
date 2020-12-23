@@ -21,7 +21,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       url: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       categoriaId: {
         type: Sequelize.INTEGER,
