@@ -1,4 +1,5 @@
 const { Articulo } = require('../models/');
+const { Categoria } = require('../models/');
 
 
 module.exports = {
@@ -6,8 +7,30 @@ module.exports = {
     list: async (req, res, next) => {
 
         try {
-            const re = await Articulo.findAll()
-            res.status(200).json(re)
+            let result = [];
+            const re = await Articulo.findAll();
+            const cat = await Categoria.findAll();
+
+            re.map( (articulo) => {
+                cat.map( (categoria) => {
+                    if(articulo.categoriaId == categoria.id){
+                        
+                        let objAux = {
+                            id: articulo.id,
+                            nombre: articulo.nombre,
+                            descripcion: articulo.descripcion,
+                            estado: articulo.estado,
+                            url: articulo.url,
+                            categoriaId: articulo.categoriaId,
+                            nombreCategoria: categoria.nombre
+                        }
+
+                        result.push(objAux);
+                    }
+                });
+            });
+            console.log(result);
+            res.status(200).json(result);
             
         } catch (error) {
             res.status(500).json({ 'error': 'Oops paso algo' })
