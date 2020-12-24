@@ -8,7 +8,6 @@ module.exports = {
         try {
 
             const re = await Categoria.findAll()
-            console.log(re[0].url);
             res.status(200).json(re)
             
         } catch (error) {
